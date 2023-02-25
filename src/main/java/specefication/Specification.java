@@ -1,4 +1,4 @@
-package mpack;
+package specefication;
 
 import static io.restassured.http.ContentType.JSON;
 

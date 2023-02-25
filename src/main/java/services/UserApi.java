@@ -4,8 +4,8 @@ import static io.restassured.RestAssured.given;
 
 import io.restassured.response.Response;
 import io.restassured.response.ValidatableResponse;
-import mpack.Specification;
-import mpack.User;
+import specefication.Specification;
+import dto.User;
 
 public class UserApi extends Specification {
 
@@ -42,7 +42,6 @@ public class UserApi extends Specification {
     return given()
         .spec(getBaseSpec())
         .pathParam("username", userName)
-        .log().all()
         .when()
         .get("/user/{username}")
         .then().statusCode(200).extract().body().as(User.class);
