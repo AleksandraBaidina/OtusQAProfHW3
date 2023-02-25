@@ -1,4 +1,4 @@
-package mpack;
+package dto;
 
 import static org.apache.commons.lang3.RandomUtils.nextInt;
 
@@ -7,7 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.apache.commons.lang3.RandomStringUtils;
+import java.util.Objects;
 
 @Builder
 @Data
@@ -38,6 +38,43 @@ public class User {
         .userStatus(nextInt())
         .build();
     return user;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    User user = (User) o;
+    return id == user.id && userStatus == user.userStatus && username.equals(user.username) && firstName.equals(user.firstName)
+        && lastName.equals(user.lastName) && email.equals(user.email) && password.equals(user.password) && phone.equals(user.phone);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(id, username, firstName, lastName, email, password, phone, userStatus);
+  }
+
+  @Override
+  public String toString() {
+    return "User{"
+        +
+        "id=" + id
+        +
+        ", username='" + username + '\''
+        +
+        ", firstName='" + firstName + '\''
+        +
+        ", lastName='" + lastName + '\''
+        +
+        ", email='" + email + '\''
+        +
+        ", password='" + password + '\''
+        +
+        ", phone='" + phone + '\''
+        +
+        ", userStatus=" + userStatus
+        +
+        '}';
   }
 }
 
