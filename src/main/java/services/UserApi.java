@@ -52,7 +52,6 @@ public class UserApi extends Specification {
     return given()
         .spec(getBaseSpec())
         .pathParam("username", userName)
-        .log().all()
         .when()
         .get("/user/{username}")
         .then();
